@@ -50,4 +50,3 @@ moodButtons.forEach(button => {
 preferenceButtons.forEach(button => {
     button.addEventListener('click', handlePreferenceSelection);
 });
-
