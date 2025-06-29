@@ -1,52 +1,54 @@
-let selectedMood = null; 
-let selectedPreference = null; 
+let selectedMood = null;
+let selectedPreference = null;
 
 const moodButtons = document.querySelectorAll('.mood-btn');
 const preferenceButtons = document.querySelectorAll('.preference-btn');
 const resultDisplay = document.getElementById('suggestion-result');
+const descriptionDisplay = document.getElementById('description');
 
 function displaySuggestion() {
-    let outputSuggestion = "Select your options to see a suggestion."; 
+  let suggestion = "Make your choices above ⬆️";
+  let description = "";
 
-    if (selectedMood && selectedPreference) {
-        if (selectedMood === "relax" && selectedPreference === "view") {
-            outputSuggestion = "Seaside Café";
-        } else if (selectedMood === "work" && selectedPreference === "wifi") {
-            outputSuggestion = "Cowork Café";
-        } else if (selectedMood === "socialize" && selectedPreference === "live music") {
-            outputSuggestion = "Jazz Lounge";
-        } else {
-            outputSuggestion = "Coffee Stop";
-        }
+  if (selectedMood && selectedPreference) {
+    if (selectedMood === "relax" && selectedPreference === "view") {
+      suggestion = "🌅 Seaside Café";
+      description = "Calm atmosphere with a beautiful sea view.";
+    } else if (selectedMood === "work" && selectedPreference === "wifi") {
+      suggestion = "💼 Cowork Café";
+      description = "Perfect for productivity with fast Wi-Fi.";
+    } else if (selectedMood === "socialize" && selectedPreference === "live music") {
+      suggestion = "🎷 Jazz Lounge";
+      description = "Great spot for friends & live tunes.";
+    } else {
+      suggestion = "☕ Coffee Stop";
+      description = "Cozy and casual for any vibe.";
     }
+  }
 
-    resultDisplay.style.opacity = 0;
-    setTimeout(() => {
-        resultDisplay.textContent = outputSuggestion;
-        resultDisplay.style.opacity = 1;
-    }, 300);
+  resultDisplay.textContent = suggestion;
+  descriptionDisplay.textContent = description;
 }
 
-function handleMoodSelection(event) {
-    moodButtons.forEach(button => button.classList.remove('selected'));
-    const clickedButton = event.target;
-    clickedButton.classList.add('selected');
-    selectedMood = clickedButton.dataset.mood;
-    displaySuggestion();
+function handleMoodSelection(e) {
+  moodButtons.forEach(btn => btn.classList.remove('selected'));
+  e.target.classList.add('selected');
+  selectedMood = e.target.dataset.mood;
+  displaySuggestion();
 }
 
-function handlePreferenceSelection(event) {
-    preferenceButtons.forEach(button => button.classList.remove('selected'));
-    const clickedButton = event.target;
-    clickedButton.classList.add('selected');
-    selectedPreference = clickedButton.dataset.preference;
-    displaySuggestion();
+function handlePreferenceSelection(e) {
+  preferenceButtons.forEach(btn => btn.classList.remove('selected'));
+  e.target.classList.add('selected');
+  selectedPreference = e.target.dataset.preference;
+  displaySuggestion();
 }
 
-moodButtons.forEach(button => {
-    button.addEventListener('click', handleMoodSelection);
-});
+moodButtons.forEach(btn => btn.addEventListener('click', handleMoodSelection));
+preferenceButtons.forEach(btn => btn.addEventListener('click', handlePreferenceSelection));
 
-preferenceButtons.forEach(button => {
-    button.addEventListener('click', handlePreferenceSelection);
+// Theme toggle
+const themeToggle = document.getElementById("themeToggle");
+themeToggle.addEventListener("change", () => {
+  document.body.classList.toggle("dark");
 });

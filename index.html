@@ -1,42 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mood-Matching Café Finder</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MoodMatch Café</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <h1>Find Your Perfect Café</h1>
-        <p>Choose your mood and preference to get a personalized café suggestion.</p>
+  <div class="toggle-container">
+    <label class="switch">
+      <input type="checkbox" id="themeToggle">
+      <span class="slider round"></span>
+    </label>
+    <span class="toggle-label">🌞 / 🌙</span>
+  </div>
 
-        <section class="selection-section">
-            <h2>1. Choose your mood:</h2>
-            <div id="mood-selection" class="button-container">
-                <button class="mood-btn" data-mood="relax">Relax</button>
-                <button class="mood-btn" data-mood="work">Work</button>
-                <button class="mood-btn" data-mood="socialize">Socialize</button>
-            </div>
-        </section>
+  <div class="container">
+    <h1>☕ MoodMatch Café</h1>
+    <p>Select your mood and vibe — get the perfect spot!</p>
 
-        <section class="selection-section">
-            <h2>2. Choose your preference:</h2>
-            <div id="preference-selection" class="button-container">
-                <button class="preference-btn" data-preference="view">Scenic View</button>
-                <button class="preference-btn" data-preference="wifi">Strong Wi-Fi</button>
-                <button class="preference-btn" data-preference="live music">Live Music</button>
-            </div>
-        </section>
+    <section class="selection-section">
+      <h2>🎭 Choose your mood:</h2>
+      <div id="mood-selection" class="button-container">
+        <button class="mood-btn" data-mood="relax">🎧 Relax</button>
+        <button class="mood-btn" data-mood="work">💻 Work</button>
+        <button class="mood-btn" data-mood="socialize">🗣️ Socialize</button>
+      </div>
+    </section>
 
-        <section id="result-section">
-            <h2>Your perfect spot is:</h2>
-            <div id="suggestion-result">
-                <p>Select your options to see a suggestion.</p>
-            </div>
-        </section>
-    </div>
+    <section class="selection-section">
+      <h2>✨ Pick your vibe:</h2>
+      <div id="preference-selection" class="button-container">
+        <button class="preference-btn" data-preference="view">🌅 Scenic View</button>
+        <button class="preference-btn" data-preference="wifi">📶 Strong Wi-Fi</button>
+        <button class="preference-btn" data-preference="live music">🎶 Live Music</button>
+      </div>
+    </section>
 
-    <script src="script.js"></script>
+    <section id="result-section">
+      <h2>📍 Your perfect café is:</h2>
+      <div id="suggestion-result">
+        <p>Make your choices above ⬆️</p>
+      </div>
+      <div id="description"></div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
